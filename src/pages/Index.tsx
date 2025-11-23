@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
 import { Badge } from "@/components/ui/badge";
+import { useState } from "react";
 
 const players = [
   { 
@@ -66,6 +67,8 @@ const players = [
 ];
 
 const Index = () => {
+  const [openCard, setOpenCard] = useState<string | null>(null);
+
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
@@ -85,6 +88,7 @@ const Index = () => {
           {players.map((player, index) => {
             const kd = (player.kills / Math.max(player.deaths, 1)).toFixed(2);
             const isTopPlayer = index === 0;
+            const isOpen = openCard === player.name;
 
             return (
               <Card
@@ -121,8 +125,11 @@ const Index = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-3 border-t-2 border-border pt-4">
-                    <div className="flex items-center justify-between bg-muted/50 p-3 border-2 border-border">
+                  <div 
+                    className="space-y-3 border-t-2 border-border pt-4 cursor-pointer"
+                    onClick={() => setOpenCard(isOpen ? null : player.name)}
+                  >
+                    <div className="flex items-center justify-between bg-muted/50 p-3 border-2 border-border hover:bg-muted transition-colors">
                       <div className="flex items-center gap-2">
                         <Icon name="Sword" size={20} className="text-accent" />
                         <span className="text-sm text-foreground pixelated">Убийств</span>
@@ -132,7 +139,7 @@ const Index = () => {
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between bg-muted/50 p-3 border-2 border-border">
+                    <div className="flex items-center justify-between bg-muted/50 p-3 border-2 border-border hover:bg-muted transition-colors">
                       <div className="flex items-center gap-2">
                         <Icon name="Skull" size={20} className="text-destructive" />
                         <span className="text-sm text-foreground pixelated">Смертей</span>
@@ -142,7 +149,7 @@ const Index = () => {
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between bg-muted/50 p-3 border-2 border-border">
+                    <div className="flex items-center justify-between bg-muted/50 p-3 border-2 border-border hover:bg-muted transition-colors">
                       <div className="flex items-center gap-2">
                         <Icon name="Clock" size={20} className="text-secondary" />
                         <span className="text-sm text-foreground pixelated">Время игры</span>
@@ -151,13 +158,23 @@ const Index = () => {
                         {player.playtime}ч
                       </span>
                     </div>
+
+                    <div className="flex items-center justify-center pt-2">
+                      <Icon 
+                        name={isOpen ? "ChevronUp" : "ChevronDown"} 
+                        size={20} 
+                        className="text-muted-foreground animate-bounce" 
+                      />
+                    </div>
                   </div>
 
-                  <div className="border-t-2 border-border pt-4">
-                    <p className="text-xs text-muted-foreground leading-relaxed" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-                      {player.description}
-                    </p>
-                  </div>
+                  {isOpen && (
+                    <div className="border-t-2 border-border pt-4 animate-in fade-in slide-in-from-top-2 duration-300">
+                      <p className="text-xs text-muted-foreground leading-relaxed" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+                        {player.description}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </Card>
             );
