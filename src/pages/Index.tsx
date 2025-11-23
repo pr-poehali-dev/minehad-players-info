@@ -3,11 +3,41 @@ import Icon from "@/components/ui/icon";
 import { Badge } from "@/components/ui/badge";
 
 const players = [
-  { name: "EnDay01", kills: 59, deaths: 17, playtime: 23 },
-  { name: "Kamelia07", kills: 1, deaths: 31, playtime: 9 },
-  { name: "kfcasdw", kills: 4, deaths: 3, playtime: 6 },
-  { name: "paata1234", kills: 2, deaths: 11, playtime: 3 },
-  { name: "BleW", kills: 18, deaths: 7, playtime: 10 },
+  { 
+    name: "EnDay01", 
+    kills: 59, 
+    deaths: 17, 
+    playtime: 23,
+    description: "Стример и блогер по серверу MINEHAD любитель строить. Игрок харош в пвп и в пве. Очень быстро реализовывает проекты."
+  },
+  { 
+    name: "Kamelia07", 
+    kills: 1, 
+    deaths: 31, 
+    playtime: 9,
+    description: "Очень любит животных! Лучше всех справляется в добыче животных. Не любит пвп, старается избегать его. Самый безопасный и дружелюбный игрок на сервере."
+  },
+  { 
+    name: "kfcasdw", 
+    kills: 4, 
+    deaths: 3, 
+    playtime: 6,
+    description: "Куча идей которые ему не терпится реализовать! Быстрее всех справляется с начальными ресурсами. Хорошо строит и добывает нужные ему ресурсы."
+  },
+  { 
+    name: "paata1234", 
+    kills: 2, 
+    deaths: 11, 
+    playtime: 3,
+    description: "Идей у него много но нет возможности их реализовать. Хорошо добывает ресурсы, но часто ленится."
+  },
+  { 
+    name: "BleW", 
+    kills: 18, 
+    deaths: 7, 
+    playtime: 10,
+    description: "Игрок который пытается захватить весь сервер. Идей полно и потихоньку они реализовываются. Пытается убивать игроков, но чаще всего умирает он. Любитель тролить и издеваться над игроками. Построил 40 дверей в которых игрок запутывается и не замечает снизу блока который отсутствует и проваливаются в его трапку. Первый получил булаву на сервере."
+  },
 ];
 
 const Index = () => {
@@ -90,6 +120,12 @@ const Index = () => {
                         {player.playtime}ч
                       </span>
                     </div>
+                  </div>
+
+                  <div className="border-t-2 border-border pt-4">
+                    <p className="text-xs text-muted-foreground leading-relaxed" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+                      {player.description}
+                    </p>
                   </div>
                 </div>
               </Card>
