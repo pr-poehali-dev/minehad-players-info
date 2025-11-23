@@ -8,6 +8,9 @@ const players = [
     kills: 59, 
     deaths: 17, 
     playtime: 23,
+    achievement: "ДИКТАТОР",
+    achievementIcon: "Shield",
+    achievementColor: "bg-accent",
     description: "Стример и блогер по серверу MINEHAD любитель строить. Игрок харош в пвп и в пве. Очень быстро реализовывает проекты."
   },
   { 
@@ -15,6 +18,9 @@ const players = [
     kills: 1, 
     deaths: 31, 
     playtime: 9,
+    achievement: "Лунная Звезда",
+    achievementIcon: "Moon",
+    achievementColor: "bg-purple-500",
     description: "Очень любит животных! Лучше всех справляется в добыче животных. Не любит пвп, старается избегать его. Самый безопасный и дружелюбный игрок на сервере."
   },
   { 
@@ -22,6 +28,9 @@ const players = [
     kills: 4, 
     deaths: 3, 
     playtime: 6,
+    achievement: "СКАЛКОВЫЙ МОНСТР",
+    achievementIcon: "Pickaxe",
+    achievementColor: "bg-primary",
     description: "Куча идей которые ему не терпится реализовать! Быстрее всех справляется с начальными ресурсами. Хорошо строит и добывает нужные ему ресурсы."
   },
   { 
@@ -29,6 +38,9 @@ const players = [
     kills: 2, 
     deaths: 11, 
     playtime: 3,
+    achievement: "прокрастинатор",
+    achievementIcon: "TimerOff",
+    achievementColor: "bg-muted",
     description: "Идей у него много но нет возможности их реализовать. Хорошо добывает ресурсы, но часто ленится."
   },
   { 
@@ -36,6 +48,9 @@ const players = [
     kills: 18, 
     deaths: 7, 
     playtime: 10,
+    achievement: "Хитрый пушистик",
+    achievementIcon: "Sparkles",
+    achievementColor: "bg-secondary",
     description: "Игрок который пытается захватить весь сервер. Идей полно и потихоньку они реализовываются. Пытается убивать игроков, но чаще всего умирает он. Любитель тролить и издеваться над игроками. Построил 40 дверей в которых игрок запутывается и не замечает снизу блока который отсутствует и проваливаются в его трапку. Первый получил булаву на сервере."
   },
 ];
@@ -80,13 +95,19 @@ const Index = () => {
                     <div className="w-16 h-16 bg-primary/20 border-4 border-primary flex items-center justify-center pixelated">
                       <Icon name="User" size={32} className="text-primary" />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h3 className="text-xl font-bold text-foreground pixelated">
                         {player.name}
                       </h3>
                       <p className="text-sm text-muted-foreground pixelated">
                         K/D: {kd}
                       </p>
+                      <div className="mt-2">
+                        <Badge className={`${player.achievementColor} text-white border-2 border-black text-xs pixelated`}>
+                          <Icon name={player.achievementIcon as any} size={12} className="mr-1" />
+                          {player.achievement}
+                        </Badge>
+                      </div>
                     </div>
                   </div>
 
